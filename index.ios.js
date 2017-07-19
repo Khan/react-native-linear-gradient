@@ -3,10 +3,8 @@
  * @flow
  */
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { processColor, requireNativeComponent, PointPropType, View, ViewPropTypes } from 'react-native';
 import type { ViewProps } from 'react-native/Libraries/Components/View/ViewPropTypes';
-const deprecatedPropType = require('react-native/Libraries/Utilities/deprecatedPropType.js');
 
 const convertPoint = (name, point) => {
   if (Array.isArray(point)) {
@@ -31,25 +29,6 @@ type PropsType = {
 } & ViewProps;
 
 export default class LinearGradient extends Component {
-  static propTypes = {
-    start: PropTypes.oneOfType([
-      PointPropType,
-      deprecatedPropType(
-        PropTypes.arrayOf(PropTypes.number),
-        'Use point object with {x, y} instead.'
-      )
-    ]),
-    end: PropTypes.oneOfType([
-      PointPropType,
-      deprecatedPropType(
-        PropTypes.arrayOf(PropTypes.number),
-        'Use point object with {x, y} instead.'
-      )
-    ]),
-    colors: PropTypes.arrayOf(PropTypes.string).isRequired,
-    locations: PropTypes.arrayOf(PropTypes.number),
-    ...ViewPropTypes,
-  };
   props: PropsType;
   gradientRef: any;
 
